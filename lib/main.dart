@@ -23,11 +23,11 @@ class MyApp extends StatelessWidget {
           color: Colors.white,
           elevation: 0,
           brightness: Brightness.light,
-          iconTheme: IconThemeData(color:Colors.black),
+          iconTheme: IconThemeData(color: Colors.black),
           textTheme: TextTheme(
               headline6: TextStyle(
-                  color:Color(0xFFD8D8D8),
-              fontSize: 18),
+                  color:Color(0xFF8B8B8B ),
+              fontSize: 20),
 
           )
 

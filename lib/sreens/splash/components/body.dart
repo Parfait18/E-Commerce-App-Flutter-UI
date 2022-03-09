@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shop_app/size_config.dart';
 import 'package:shop_app/sreens/sign_in/sign_in_screeen.dart';
 import 'package:shop_app/sreens/splash/components/splash_content.dart';
@@ -42,6 +45,7 @@ class _BodyState extends State<Body> {
                   onPageChanged: (value){
                     setState(() {
                       currentPage=value;
+
                     });
 
                   },
@@ -81,6 +85,9 @@ class _BodyState extends State<Body> {
 
 
  AnimatedContainer BuildDot(int index){
+    log("current-> "+currentPage.toString()+"index-> "+index.toString());
+   int val =  currentPage == index ? 20:6;
+   log(val.toString());
     return AnimatedContainer(
       duration: cAnimationDuration,
         margin: EdgeInsets.only(right: 5),
