@@ -1,6 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:shop_app/size_config.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shop_app/size_config.dart';
+import 'package:shop_app/sreens/sign_in/sign_in_screeen.dart';
+import 'package:shop_app/sreens/splash/components/splash_content.dart';
+
+import '../../../components/default_button.dart';
 import '../../../constants.dart';
 
 class Body extends StatefulWidget {
@@ -11,6 +17,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  int currentPage = 0;
   List<Map<String,String>> splashData= [
     {
       "text": "Welcome in APS Shop, Lets's shop",
@@ -34,43 +41,69 @@ class _BodyState extends State<Body> {
           children: <Widget>[
             Expanded(
                 flex: 3,
-                child: Column(
-                    children: <Widget>[
-                      Spacer(),
-                      Text("APS SHOP",
-                        style: TextStyle(
-                            fontSize: getProportionateScreenWidth(36),
-                            color: cPrimaryColor,
-                            fontWeight: FontWeight.bold
-                        ),),
-                      Text("Welcome in APS Shop, Lets's shop"),
-                      Spacer(flex: 2),
-                      Image.asset(
-                        "assets/images/splash_1.png",
-                        height: getProportionateScreenHeight(265),
-                        width: getProportionateScreenWidth(235),
-                      )
-                    ]
-                )
+                child:PageView.builder(
+                  onPageChanged: (value){
+                    setState(() {
+                      currentPage=value;
+
+                    });
+
+                  },
+                    itemCount: splashData.length,
+                    itemBuilder: (
+                        context,index)=>SplashContent(
+                          text: splashData[index].values.first,
+                        image: splashData[index].values.last))
             ),
             Expanded(
                 flex:2,
-                child: SizedBox())
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+                  child: Column(
+                    children: <Widget>[
+                      Spacer(),
+                     Row(
+                       children: List.generate(splashData.length, (index) => BuildDot(index)),
+                       mainAxisAlignment: MainAxisAlignment.center,
+                     ),
+                      Spacer(flex: 2,),
+                      DefaultButton(
+                        text: "Continuer",
+                      press: (){
+                          Navigator.pushNamed(context, SignInScreen.routeName);
+                      },),
+                      Spacer(),
+                    ],
+                  ),
+                )
+            )
           ],
         ),
       ),
     );
   }
+
+
+ AnimatedContainer BuildDot(int index){
+    log("current-> "+currentPage.toString()+"index-> "+index.toString());
+   int val =  currentPage == index ? 20:6;
+   log(val.toString());
+    return AnimatedContainer(
+      duration: cAnimationDuration,
+        margin: EdgeInsets.only(right: 5),
+        height: 6,
+        width: currentPage == index ? 20:6 ,
+        decoration: BoxDecoration(
+            color: currentPage == index ? cPrimaryColor : Color(0xFFD8D8D8),
+            borderRadius: BorderRadius.circular(3)
+        )
+
+    );
+  }
+
 }
- class SplashContent extends StatelessWidget {
-   const SplashContent({Key? key, required this.text, required this.image}) : super(key: key);
-   final String text,image;
 
 
-   @override
-   Widget build(BuildContext context) {
-     return Column();
-   }
- }
 
- 
+
+
