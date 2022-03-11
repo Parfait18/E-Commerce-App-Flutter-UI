@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:shop_app/sreens/sign_in/sign_in_screeen.dart';
+import 'package:shop_app/sreens/sign_in/sign_in_screen.dart';
 
 //we use route name
 //All our route will be available here

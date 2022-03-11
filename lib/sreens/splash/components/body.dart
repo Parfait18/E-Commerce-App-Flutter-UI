@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shop_app/size_config.dart';
-import 'package:shop_app/sreens/sign_in/sign_in_screeen.dart';
+import 'package:shop_app/sreens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/sreens/splash/components/splash_content.dart';
 
 import '../../../components/default_button.dart';
