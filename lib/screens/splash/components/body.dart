@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:shop_app/size_config.dart';
-import 'package:shop_app/sreens/sign_in/sign_in_screen.dart';
-import 'package:shop_app/sreens/splash/components/splash_content.dart';
+import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
+import 'package:shop_app/screens/splash/components/splash_content.dart';
+
 
 import '../../../components/default_button.dart';
 import '../../../constants.dart';
@@ -85,9 +85,9 @@ class _BodyState extends State<Body> {
 
 
  AnimatedContainer BuildDot(int index){
-    log("current-> "+currentPage.toString()+"index-> "+index.toString());
+   // log("current-> "+currentPage.toString()+"index-> "+index.toString());
    int val =  currentPage == index ? 20:6;
-   log(val.toString());
+   //log(val.toString());
     return AnimatedContainer(
       duration: cAnimationDuration,
         margin: EdgeInsets.only(right: 5),
