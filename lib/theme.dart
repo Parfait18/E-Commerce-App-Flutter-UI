@@ -21,6 +21,27 @@ ThemeData  theme(){
     textTheme: TextTheme(
         bodyText1: TextStyle(color: cTextColor),
         bodyText2: TextStyle(color: cTextColor)),
+    inputDecorationTheme: inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
+  );
+}
+
+InputDecorationTheme inputDecorationTheme() {
+  return InputDecorationTheme(
+    floatingLabelBehavior: FloatingLabelBehavior.always,
+    contentPadding: EdgeInsets.symmetric(
+        horizontal:42,
+        vertical: 20
+    ),
+    enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(28),
+        borderSide: BorderSide(color: cTextColor),
+        gapPadding: 18
+    ),
+    focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(28),
+        borderSide: BorderSide(color: cTextColor),
+        gapPadding: 18
+    ),
   );
 }
